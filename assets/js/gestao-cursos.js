@@ -2,11 +2,11 @@
 initSidebar();
 
 let cursos = [
-  { id:1, codigo:'CC001', nome:'Ciência da Computação',  duracao:8, creditos:240, status:'ativo' },
-  { id:2, codigo:'ES002', nome:'Engenharia de Software', duracao:8, creditos:240, status:'ativo' },
-  { id:3, codigo:'SI003', nome:'Sistemas de Informação', duracao:8, creditos:240, status:'ativo' },
-  { id:4, codigo:'AD004', nome:'Administração',          duracao:8, creditos:240, status:'ativo' },
-  { id:5, codigo:'DI005', nome:'Direito',                duracao:10,creditos:300, status:'ativo' },
+  { id:1, codigo:'CC001', nome:'Ciência da Computação',  duracao:8, status:'ativo' },
+  { id:2, codigo:'ES002', nome:'Engenharia de Software', duracao:8, status:'ativo' },
+  { id:3, codigo:'SI003', nome:'Sistemas de Informação', duracao:8, status:'ativo' },
+  { id:4, codigo:'AD004', nome:'Administração',          duracao:8, status:'ativo' },
+  { id:5, codigo:'DI005', nome:'Direito',                duracao:10, status:'ativo' },
 ];
 let proximoId = 6;
 
@@ -16,7 +16,6 @@ function renderizarTabela() {
     <td><span class="badge badge--azul">${c.codigo}</span></td>
     <td>${c.nome}</td>
     <td>${c.duracao} semestres</td>
-    <td>${c.creditos}</td>
     <td><span class="badge ${c.status === 'ativo' ? 'badge--verde' : 'badge--vermelho'}">${c.status === 'ativo' ? 'Ativo' : 'Inativo'}</span></td>
     <td>
       <button class="btn-acao btn-acao--editar" data-id="${c.id}" title="Editar">
@@ -48,7 +47,6 @@ function abrirModal(id = null) {
   document.getElementById('curso-codigo').value   = curso?.codigo ?? '';
   document.getElementById('curso-nome').value     = curso?.nome ?? '';
   document.getElementById('curso-duracao').value  = curso?.duracao ?? '';
-  document.getElementById('curso-creditos').value = curso?.creditos ?? '';
   document.getElementById('curso-status').value   = curso?.status ?? 'ativo';
   document.getElementById('modal-overlay').classList.remove('oculto');
 }
@@ -71,19 +69,18 @@ document.getElementById('form-curso').addEventListener('submit', async e => {
   const codigo   = document.getElementById('curso-codigo').value.trim();
   const nome     = document.getElementById('curso-nome').value.trim();
   const duracao  = +document.getElementById('curso-duracao').value;
-  const creditos = +document.getElementById('curso-creditos').value;
   const status   = document.getElementById('curso-status').value;
 
-  if (!codigo || !nome || !duracao || !creditos) return;
+  if (!codigo || !nome || !duracao) return;
 
   /* TODO: await fetch('/api/admin/cursos', { method: id ? 'PUT' : 'POST', ... }) */
   await new Promise(r => setTimeout(r, 600));
 
   if (id) {
     const idx = cursos.findIndex(c => c.id === +id);
-    cursos[idx] = { id: +id, codigo, nome, duracao, creditos, status };
+    cursos[idx] = { id: +id, codigo, nome, duracao, status };
   } else {
-    cursos.push({ id: proximoId++, codigo, nome, duracao, creditos, status });
+    cursos.push({ id: proximoId++, codigo, nome, duracao, status });
   }
 
   fecharModal();

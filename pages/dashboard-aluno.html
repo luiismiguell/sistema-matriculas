@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard — Portal Vivência</title>
   <link rel="stylesheet" href="../assets/css/shared.css" />
+  <link rel="stylesheet" href="../assets/css/dashboard-aluno.css" />
 </head>
 <body style="display:flex">
 
@@ -42,10 +43,6 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         Relatórios
       </a>
-      <a href="diagrama-fluxo.html" class="sidebar__link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="12"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="12" x2="5" y2="16"/><line x1="12" y1="12" x2="19" y2="16"/></svg>
-        Diagrama do Sistema
-      </a>
     </nav>
     <div class="sidebar__rodape">
       <a href="../index.html" class="sidebar__link sidebar__link--sair">
@@ -80,40 +77,40 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
         </div>
       </section>
-    <div class="ctd-aluno">
-      <!-- KPIs -->
-      <section class="kpis">
-        <div class="kpi">
-          <div class="kpi__icone kpi__icone--azul">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          </div>
-          <div class="kpi__dados">
-            <span class="kpi__valor" id="val-matriculados"><span class="skeleton"></span></span>
-            <span class="kpi__label">cursos Matriculadas</span>
-          </div>
-        </div>
-        <div class="kpi">
+
+      <!-- KPIs - Organizado em 2 linhas de 2 colunas para melhor aproveitamento horizontal -->
+      <section class="kpis kpis--dashboard">
+        <div class="kpi kpi--wide">
           <div class="kpi__icone kpi__icone--verde">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           <div class="kpi__dados">
-            <span class="kpi__valor" id="val-creditos"><span class="skeleton"></span></span>
-            <span class="kpi__label">Créditos Aprovados / Requeridos</span>
+            <span class="kpi__valor" id="val-cursos-aprovadas"><span class="skeleton"></span></span>
+            <span class="kpi__label">Cursos Aprovadas</span>
           </div>
           <div class="kpi__barra-wrapper">
-            <div class="kpi__barra" id="barra-creditos"></div>
+            <div class="kpi__barra" id="barra-cursos-aprovadas"></div>
           </div>
         </div>
-        <div class="kpi">
+        <div class="kpi kpi--wide">
           <div class="kpi__icone kpi__icone--laranja">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div class="kpi__dados">
-            <span class="kpi__valor kpi__valor--sm" id="val-proxima-aula"><span class="skeleton"></span></span>
+            <span class="kpi__valor kpi__valor--sm" id="val-cursos-andamento"><span class="skeleton"></span></span>
+            <span class="kpi__label">Em Andamento</span>
+          </div>
+        </div>
+        <div class="kpi kpi--wide">
+          <div class="kpi__icone kpi__icone--azul">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <div class="kpi__dados">
+            <span class="kpi__valor" id="val-proxima-aula"><span class="skeleton"></span></span>
             <span class="kpi__label">Próxima Aula</span>
           </div>
         </div>
-        <div class="kpi">
+        <div class="kpi kpi--wide">
           <div class="kpi__icone kpi__icone--roxo">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
           </div>
@@ -124,53 +121,114 @@
         </div>
       </section>
 
-      <!-- AÇÕES RÁPIDAS -->
-      <section>
-        <h3 class="secao__titulo">Ações Rápidas</h3>
-        <div class="acoes__grid">
-          <a href="matricula.html" class="acao-card">
-            <div class="acao-card__icone acao-card__icone--azul">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      <!-- ÁREA PRINCIPAL: Ações rápidas à esquerda, Próximas aulas/avisos à direita -->
+      <div class="dashboard-main">
+        <!-- AÇÕES RÁPIDAS -->
+        <section class="cartao">
+          <h3 class="secao__titulo">Ações Rápidas</h3>
+          <div class="acoes__grid acoes__grid--4">
+            <a href="matricula.html" class="acao-card">
+              <div class="acao-card__icone acao-card__icone--azul">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </div>
+              <div>
+                <p class="acao-card__titulo">Realizar Matrícula</p>
+                <p class="acao-card__desc">Inscreva-se em cursos do período</p>
+              </div>
+              <svg class="acao-card__seta" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a href="horario.html" class="acao-card">
+              <div class="acao-card__icone acao-card__icone--roxo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div>
+                <p class="acao-card__titulo">Ver Horário</p>
+                <p class="acao-card__desc">Consulte sua grade semanal de aulas</p>
+              </div>
+              <svg class="acao-card__seta" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a href="plano-estudos.html" class="acao-card">
+              <div class="acao-card__icone acao-card__icone--verde">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              </div>
+              <div>
+                <p class="acao-card__titulo">Plano de Estudos</p>
+                <p class="acao-card__desc">Histórico e cursos pendentes</p>
+              </div>
+              <svg class="acao-card__seta" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a href="reporte-matricula.html" class="acao-card">
+              <div class="acao-card__icone acao-card__icone--laranja">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
+              <div>
+                <p class="acao-card__titulo">Relatórios</p>
+                <p class="acao-card__desc">Painel de BI e estatísticas</p>
+              </div>
+              <svg class="acao-card__seta" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </section>
+
+        <!-- CURSOS DO PERÍODO ATUAL -->
+        <section class="cartao">
+          <div class="secao-header">
+            <h3 class="secao__titulo">Cursos do Período Atual</h3>
+            <a href="matricula.html" class="link-discreto">Ver todas</a>
+          </div>
+          <div class="tabela-wrapper">
+            <table class="tabela">
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Disciplina</th>
+                  <th>Professor</th>
+                  <th>Horário</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="cursos-periodo">
+                <tr><td colspan="5" class="tabela__vazio">Carregando…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <!-- LATERAL: Próximas aulas e avisos -->
+      <aside class="dashboard-sidebar">
+        <section class="cartao">
+          <h3 class="secao__titulo">Próximas Aulas</h3>
+          <div class="proximas-aulas" id="proximas-aulas">
+            <p class="tabela__vazio">Carregando…</p>
+          </div>
+        </section>
+
+        <section class="cartao">
+          <h3 class="secao__titulo">Avisos</h3>
+          <div class="avisos-lista" id="avisos-lista">
+            <div class="aviso">
+              <div class="aviso__icone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <div>
+                <p class="aviso__titulo">Período de matrícula aberto</p>
+                <p class="aviso__texto">O período de matrícula para o 2º semestre de 2025 está aberto até 15/07.</p>
+              </div>
             </div>
-            <div>
-              <p class="acao-card__titulo">Realizar Matrícula</p>
-              <p class="acao-card__desc">Inscreva-se em cursos do período</p>
+            <div class="aviso">
+              <div class="aviso__icone" style="background:#fef3c7;color:#d97706">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div>
+                <p class="aviso__titulo">Vagas limitadas</p>
+                <p class="aviso__texto">Algumas cursos estão com vagas esgotadas. Verifique a disponibilidade na matrícula.</p>
+              </div>
             </div>
-            <svg class="acao-card__seta" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-          <a href="horario.html" class="acao-card">
-            <div class="acao-card__icone acao-card__icone--roxo">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            </div>
-            <div>
-              <p class="acao-card__titulo">Ver Horário</p>
-              <p class="acao-card__desc">Consulte sua grade semanal de aulas</p>
-            </div>
-            <svg class="acao-card__seta" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-          <a href="plano-estudos.html" class="acao-card">
-            <div class="acao-card__icone acao-card__icone--verde">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-            </div>
-            <div>
-              <p class="acao-card__titulo">Plano de Estudos</p>
-              <p class="acao-card__desc">Histórico e cursos pendentes</p>
-            </div>
-            <svg class="acao-card__seta" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-          <a href="reporte-matricula.html" class="acao-card">
-            <div class="acao-card__icone acao-card__icone--laranja">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-            </div>
-            <div>
-              <p class="acao-card__titulo">Relatórios</p>
-              <p class="acao-card__desc">Painel de BI e estatísticas</p>
-            </div>
-            <svg class="acao-card__seta" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </div>
-      </section>
-    </div>
+          </div>
+        </section>
+      </aside>
+
     </main>
   </div>
 

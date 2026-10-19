@@ -5,29 +5,29 @@ const historico = [
   {
     periodo: '2024 / 1º Semestre', status: 'concluido',
     cursos: [
-      { codigo:'CC101', nome:'Algoritmos e Estruturas de Dados', creditos:4, nota:8.5, status:'aprovado' },
-      { codigo:'CC102', nome:'Cálculo I',                        creditos:4, nota:7.2, status:'aprovado' },
-      { codigo:'CC103', nome:'Introdução à Programação',         creditos:4, nota:9.1, status:'aprovado' },
-      { codigo:'CC104', nome:'Álgebra Linear',                   creditos:4, nota:6.8, status:'aprovado' },
+      { codigo:'CC101', nome:'Algoritmos e Estruturas de Dados', nota:8.5, status:'aprovado' },
+      { codigo:'CC102', nome:'Cálculo I',                        nota:7.2, status:'aprovado' },
+      { codigo:'CC103', nome:'Introdução à Programação',         nota:9.1, status:'aprovado' },
+      { codigo:'CC104', nome:'Álgebra Linear',                   nota:6.8, status:'aprovado' },
     ]
   },
   {
     periodo: '2024 / 2º Semestre', status: 'concluido',
     cursos: [
-      { codigo:'CC201', nome:'Programação Orientada a Objetos',  creditos:4, nota:8.8, status:'aprovado' },
-      { codigo:'CC202', nome:'Banco de Dados I',                 creditos:4, nota:7.5, status:'aprovado' },
-      { codigo:'CC203', nome:'Cálculo II',                       creditos:4, nota:5.2, status:'reprovado' },
-      { codigo:'CC204', nome:'Probabilidade e Estatística',      creditos:4, nota:8.0, status:'aprovado' },
+      { codigo:'CC201', nome:'Programação Orientada a Objetos',  nota:8.8, status:'aprovado' },
+      { codigo:'CC202', nome:'Banco de Dados I',                 nota:7.5, status:'aprovado' },
+      { codigo:'CC203', nome:'Cálculo II',                       nota:5.2, status:'reprovado' },
+      { codigo:'CC204', nome:'Probabilidade e Estatística',      nota:8.0, status:'aprovado' },
     ]
   },
   {
     periodo: '2025 / 1º Semestre', status: 'andamento',
     cursos: [
-      { codigo:'CC301', nome:'Engenharia de Software',           creditos:4, nota:null, status:'andamento' },
-      { codigo:'CC302', nome:'Redes de Computadores',            creditos:4, nota:null, status:'andamento' },
-      { codigo:'CC203', nome:'Cálculo II (Recuperação)',         creditos:4, nota:null, status:'andamento' },
-      { codigo:'CC303', nome:'Sistemas Operacionais',            creditos:4, nota:null, status:'andamento' },
-      { codigo:'CC304', nome:'Teoria da Computação',             creditos:4, nota:null, status:'andamento' },
+      { codigo:'CC301', nome:'Engenharia de Software',           nota:null, status:'andamento' },
+      { codigo:'CC302', nome:'Redes de Computadores',            nota:null, status:'andamento' },
+      { codigo:'CC203', nome:'Cálculo II (Recuperação)',         nota:null, status:'andamento' },
+      { codigo:'CC303', nome:'Sistemas Operacionais',            nota:null, status:'andamento' },
+      { codigo:'CC304', nome:'Teoria da Computação',             nota:null, status:'andamento' },
     ]
   },
 ];
@@ -53,12 +53,11 @@ function renderizar() {
       <div class="periodo-card__corpo">
         <div class="tabela-wrapper">
           <table class="tabela">
-            <thead><tr><th>Código</th><th>Disciplina</th><th>Créditos</th><th>Nota</th><th>Situação</th></tr></thead>
+            <thead><tr><th>Código</th><th>Disciplina</th><th>Nota</th><th>Situação</th></tr></thead>
             <tbody>
               ${p.cursos.map(d => `<tr>
                 <td><span class="badge badge--azul">${d.codigo}</span></td>
                 <td>${d.nome}</td>
-                <td>${d.creditos}</td>
                 <td>${d.nota !== null ? d.nota.toFixed(1) : '—'}</td>
                 <td>${badgeStatus(d.status)}</td>
               </tr>`).join('')}

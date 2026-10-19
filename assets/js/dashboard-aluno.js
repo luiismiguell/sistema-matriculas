@@ -12,8 +12,8 @@ async function carregarDados() {
       curso: 'Ciência da Computação',
       periodoLetivo: '2025 / 1º Semestre',
       cursosMatriculadas: 5,
-      creditosAprovados: 72,
-      creditosRequeridos: 240,
+      cursosAprovadas: 18,
+      cursosAndamento: 5,
       proximaAula: 'Seg 08h — Algoritmos',
       cr: '8.4'
     };
@@ -23,13 +23,14 @@ async function carregarDados() {
     document.getElementById('banner-saudacao').textContent   = `${saudacao()}, ${dados.primeiroNome}!`;
     document.getElementById('banner-curso').textContent      = dados.curso;
     document.getElementById('periodo-texto').textContent     = dados.periodoLetivo;
-    document.getElementById('val-matriculados').textContent  = dados.cursosMatriculadas;
-    document.getElementById('val-creditos').textContent      = `${dados.creditosAprovados} / ${dados.creditosRequeridos}`;
+    document.getElementById('val-cursos-aprovadas').textContent  = dados.cursosAprovadas;
+    document.getElementById('val-cursos-andamento').textContent  = dados.cursosAndamento;
     document.getElementById('val-proxima-aula').textContent  = dados.proximaAula;
     document.getElementById('val-cr').textContent            = dados.cr;
 
-    const pct = Math.min(100, Math.round((dados.creditosAprovados / dados.creditosRequeridos) * 100));
-    document.getElementById('barra-creditos').style.width = pct + '%';
+    // Barra de progresso para cursos aprovadas (ex: de 40 cursos do currículo)
+    const pct = Math.min(100, Math.round((dados.cursosAprovadas / 40) * 100));
+    document.getElementById('barra-cursos-aprovadas').style.width = pct + '%';
   } catch (err) {
     console.error(err);
   }

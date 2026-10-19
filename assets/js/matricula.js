@@ -5,20 +5,20 @@ let cursos = [];
 let carrinho = [];
 
 const cursosMock = [
-  { id:1, codigo:'CC101', nome:'Algoritmos e Estruturas de Dados', periodo:1, creditos:4, vagas:5,  horario:'Seg/Qua 08h–10h' },
-  { id:2, codigo:'CC102', nome:'Cálculo I',                        periodo:1, creditos:4, vagas:12, horario:'Ter/Qui 10h–12h' },
-  { id:3, codigo:'CC103', nome:'Introdução à Programação',         periodo:1, creditos:4, vagas:0,  horario:'Seg/Qua 14h–16h' },
-  { id:4, codigo:'CC201', nome:'Programação Orientada a Objetos',  periodo:2, creditos:4, vagas:8,  horario:'Ter/Qui 08h–10h' },
-  { id:5, codigo:'CC202', nome:'Banco de Dados I',                 periodo:2, creditos:4, vagas:3,  horario:'Sex 08h–12h' },
-  { id:6, codigo:'CC301', nome:'Engenharia de Software',           periodo:3, creditos:4, vagas:15, horario:'Seg/Qua 16h–18h' },
-  { id:7, codigo:'CC302', nome:'Redes de Computadores',            periodo:3, creditos:4, vagas:7,  horario:'Ter/Qui 14h–16h' },
-  { id:8, codigo:'CC401', nome:'Inteligência Artificial',          periodo:4, creditos:4, vagas:10, horario:'Sex 14h–18h' },
+  { id:1, codigo:'CC101', nome:'Algoritmos e Estruturas de Dados', periodo:1, vagas:5,  horario:'Seg/Qua 08h–10h' },
+  { id:2, codigo:'CC102', nome:'Cálculo I',                        periodo:1, vagas:12, horario:'Ter/Qui 10h–12h' },
+  { id:3, codigo:'CC103', nome:'Introdução à Programação',         periodo:1, vagas:0,  horario:'Seg/Qua 14h–16h' },
+  { id:4, codigo:'CC201', nome:'Programação Orientada a Objetos',  periodo:2, vagas:8,  horario:'Ter/Qui 08h–10h' },
+  { id:5, codigo:'CC202', nome:'Banco de Dados I',                 periodo:2, vagas:3,  horario:'Sex 08h–12h' },
+  { id:6, codigo:'CC301', nome:'Engenharia de Software',           periodo:3, vagas:15, horario:'Seg/Qua 16h–18h' },
+  { id:7, codigo:'CC302', nome:'Redes de Computadores',            periodo:3, vagas:7,  horario:'Ter/Qui 14h–16h' },
+  { id:8, codigo:'CC401', nome:'Inteligência Artificial',          periodo:4, vagas:10, horario:'Sex 14h–18h' },
 ];
 
 function renderizarTabela(lista) {
   const corpo = document.getElementById('lista-cursos');
   if (!lista.length) {
-    corpo.innerHTML = '<tr><td colspan="7" class="tabela__vazio">Nenhuma disciplina encontrada.</td></tr>';
+    corpo.innerHTML = '<tr><td colspan="6" class="tabela__vazio">Nenhuma disciplina encontrada.</td></tr>';
     return;
   }
   corpo.innerHTML = lista.map(d => {
@@ -29,7 +29,6 @@ function renderizarTabela(lista) {
       <td><span class="badge badge--azul">${d.codigo}</span></td>
       <td>${d.nome}</td>
       <td>${d.periodo}º</td>
-      <td>${d.creditos}</td>
       <td><span class="badge ${d.vagas === 0 ? 'badge--vermelho' : d.vagas <= 5 ? 'badge--laranja' : 'badge--verde'}">${d.vagas === 0 ? 'Esgotado' : d.vagas + ' vagas'}</span></td>
       <td style="font-size:.78rem;color:var(--texto-sec)">${d.horario}</td>
     </tr>`;
@@ -65,7 +64,7 @@ function renderizarCarrinho() {
     <div class="carrinho__item">
       <div>
         <p class="carrinho__item-nome">${d.nome}</p>
-        <p class="carrinho__item-info">${d.codigo} · ${d.creditos} créditos</p>
+        <p class="carrinho__item-info">${d.codigo}</p>
       </div>
       <button class="carrinho__remover" data-id="${d.id}" aria-label="Remover">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -81,9 +80,7 @@ function renderizarCarrinho() {
     });
   });
 
-  const totalCreditos = carrinho.reduce((s, d) => s + d.creditos, 0);
-  document.getElementById('carr-qtd').textContent      = carrinho.length;
-  document.getElementById('carr-creditos').textContent = totalCreditos;
+  document.getElementById('carr-qtd').textContent = carrinho.length;
   resumo.style.display = 'flex';
   btnConf.disabled = false;
 }

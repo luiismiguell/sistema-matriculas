@@ -20,7 +20,7 @@ async function carregarDados() {
     document.getElementById('val-cursos').textContent      = cursos.length;
     document.getElementById('val-alunos').textContent      = totalAlunos;
     document.getElementById('val-ocupacao').textContent    = ocupMedia + '%';
-    document.getElementById('val-cursos').textContent = 42;
+    document.getElementById('val-disciplinas').textContent = 42;
 
     const corpo = document.getElementById('tabela-resumo');
     corpo.innerHTML = cursos.map(c => {

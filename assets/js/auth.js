@@ -49,19 +49,17 @@ if (formCadastro) {
   formCadastro.addEventListener('submit', async e => {
     e.preventDefault();
     const nome      = document.getElementById('cad-nome');
-    const matricula = document.getElementById('cad-matricula');
     const email     = document.getElementById('cad-email');
     const curso     = document.getElementById('cad-curso');
     const senha     = document.getElementById('cad-senha');
     const confirmar = document.getElementById('cad-confirmar');
     const btn       = document.getElementById('btn-cadastro');
 
-    let ok = validarCampo(nome,      'Informe seu nome.') &
-             validarCampo(matricula, 'Informe sua matrícula.') &
-             validarCampo(email,     'Informe seu e-mail.') &
+    let ok = validarCampo(nome,  'Informe seu nome.') &
+             validarCampo(email, 'Informe seu e-mail.') &
              validarEmail(email) &
-             validarCampo(curso,     'Selecione seu curso.') &
-             validarCampo(senha,     'Crie uma senha.');
+             validarCampo(curso, 'Selecione seu curso.') &
+             validarCampo(senha, 'Crie uma senha.');
 
     if (senha.value.length < 8) {
       senha.classList.add('invalido');

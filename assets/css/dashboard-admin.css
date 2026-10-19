@@ -2,9 +2,61 @@
 .banner--admin {
   background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%);
 }
-.dashboard-grid {
+
+/* KPIs do dashboard admin - grid 2x2 */
+.kpis--dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.kpi--wide {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .5rem;
+}
+
+.kpi--wide .kpi__icone {
+  width: 40px;
+  height: 40px;
+}
+
+.kpi--wide .kpi__dados {
+  width: 100%;
+}
+
+.kpi--wide .kpi__valor {
+  font-size: 1.4rem;
+}
+
+/* Dashboard principal - layout de 2 colunas */
+.dashboard-main {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  align-items: start;
+  gap: 1.5rem;
+  margin-top: .5rem;
+}
+
+/* Ações grid 2x2 para admin */
+.acoes__grid--4 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .75rem;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .dashboard-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .kpis--dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .acoes__grid--4 {
+    grid-template-columns: 1fr;
+  }
 }
