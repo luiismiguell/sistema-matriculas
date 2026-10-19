@@ -31,7 +31,7 @@ if (formLogin) {
     if (!ok) return;
     setCarregando(btn, true);
     try {
-      /* TODO: await fetch('/api/auth/login', { method:'POST', ... }) */
+      /* TODO: integrar com o endpoint de autenticação após definição do contrato da API. */
       await new Promise(r => setTimeout(r, 1200));
       exibirFeedback('msg-login', 'Login realizado! Redirecionando…', 'sucesso');
       setTimeout(() => { window.location.href = 'dashboard-aluno.html'; }, 1500);
@@ -78,7 +78,7 @@ if (formCadastro) {
 
     setCarregando(btn, true);
     try {
-      /* TODO: await fetch('/api/auth/cadastro', { method:'POST', ... }) */
+      /* TODO: integrar com o endpoint de cadastro após definição do contrato da API. */
       await new Promise(r => setTimeout(r, 1200));
       exibirFeedback('msg-cadastro', 'Conta criada! Faça login para continuar.', 'sucesso');
       formCadastro.reset();

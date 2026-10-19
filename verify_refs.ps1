@@ -1,4 +1,4 @@
-$root = 'C:\Users\Asus\Downloads\matriculas-final\matriculas'
+$root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $issues = @()
 
 $files = @('index.html') + (Get-ChildItem "$root\pages\*.html" | Select-Object -ExpandProperty Name)
@@ -23,7 +23,7 @@ foreach ($html_file in $files) {
         $target = Resolve-Path (Join-Path $html_dir $ref) -ErrorAction SilentlyContinue
         if (-not $target) {
             $fname = [System.IO.Path]::GetFileName($html_file)
-            $issues += "${fname}: ${ref}"
+            $issues += "${fname}: ${localRef}"
         }
     }
 }

@@ -3,7 +3,7 @@ initSidebar();
 
 async function carregarDados() {
   try {
-    /* TODO: const dados = await fetch('/api/estudante/perfil').then(r => r.json()); */
+    /* TODO: carregar o perfil pela API após definição do contrato do backend. */
     await new Promise(r => setTimeout(r, 800));
     const dados = {
       nomeCompleto: 'Estudante Teste',
@@ -28,7 +28,7 @@ async function carregarDados() {
     document.getElementById('val-proxima-aula').textContent  = dados.proximaAula;
     document.getElementById('val-cr').textContent            = dados.cr;
 
-    // Barra de progresso para cursos aprovadas (ex: de 40 cursos do currículo)
+    // Barra de progresso para cursos aprovados (ex: de 40 cursos do currículo)
     const pct = Math.min(100, Math.round((dados.cursosAprovadas / 40) * 100));
     document.getElementById('barra-cursos-aprovadas').style.width = pct + '%';
   } catch (err) {

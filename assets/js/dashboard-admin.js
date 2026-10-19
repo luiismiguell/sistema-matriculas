@@ -3,7 +3,7 @@ initSidebar();
 
 async function carregarDados() {
   try {
-    /* TODO: const dados = await fetch('/api/admin/resumo').then(r => r.json()); */
+    /* TODO: carregar o resumo pela API após definição do contrato do backend. */
     await new Promise(r => setTimeout(r, 800));
     const cursos = [
       { codigo: 'CC001', nome: 'Ciência da Computação', vagas: 40, matriculados: 38 },

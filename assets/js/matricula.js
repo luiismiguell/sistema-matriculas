@@ -102,7 +102,7 @@ document.getElementById('btn-confirmar').addEventListener('click', async () => {
   const btn = document.getElementById('btn-confirmar');
   setCarregando(btn, true);
   try {
-    /* TODO: await fetch('/api/matricula', { method:'POST', body: JSON.stringify({ cursos: carrinho.map(d=>d.id) }) }) */
+    /* TODO: confirmar a matrícula pela API após definição do contrato do backend. */
     await new Promise(r => setTimeout(r, 1200));
     exibirFeedback('msg-matricula', `Matrícula confirmada em ${carrinho.length} disciplina(s)!`, 'sucesso');
     carrinho = [];
@@ -116,7 +116,7 @@ document.getElementById('btn-confirmar').addEventListener('click', async () => {
 });
 
 async function init() {
-  /* TODO: cursos = await fetch('/api/cursos').then(r => r.json()); */
+  /* TODO: carregar cursos pela API após definição do contrato do backend. */
   await new Promise(r => setTimeout(r, 600));
   cursos = cursosMock;
   renderizarTabela(cursos);

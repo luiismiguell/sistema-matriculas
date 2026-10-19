@@ -73,7 +73,7 @@ document.getElementById('form-curso').addEventListener('submit', async e => {
 
   if (!codigo || !nome || !duracao) return;
 
-  /* TODO: await fetch('/api/admin/cursos', { method: id ? 'PUT' : 'POST', ... }) */
+  /* TODO: integrar a persistência pela API após definição do contrato do backend. */
   await new Promise(r => setTimeout(r, 600));
 
   if (id) {
