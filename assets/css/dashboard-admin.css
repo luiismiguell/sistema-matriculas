@@ -1,0 +1,10 @@
+/* ── dashboard-admin.css ── */
+.banner--admin {
+  background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%);
+}
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}

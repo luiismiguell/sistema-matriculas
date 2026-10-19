@@ -1,0 +1,19 @@
+/* ── plano-estudos.css ── */
+.periodos { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.periodo-card {
+  background: var(--branco); border: 1px solid var(--borda);
+  border-radius: var(--raio); box-shadow: var(--sombra); overflow: hidden;
+}
+.periodo-card__header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.5rem; background: var(--fundo);
+  border-bottom: 1px solid var(--borda); cursor: pointer;
+  user-select: none;
+}
+.periodo-card__titulo { font-size: .95rem; font-weight: 700; color: var(--azul-escuro); }
+.periodo-card__meta   { display: flex; gap: .75rem; align-items: center; }
+.periodo-card__seta   { transition: transform .2s; color: var(--texto-sec); }
+.periodo-card.aberto .periodo-card__seta { transform: rotate(180deg); }
+.periodo-card__corpo  { display: none; }
+.periodo-card.aberto .periodo-card__corpo { display: block; }

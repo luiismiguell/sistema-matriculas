@@ -1,0 +1,34 @@
+/* ── matricula.css ── */
+.matricula-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1.5rem;
+  align-items: start;
+}
+.matricula-filtros { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.carrinho { position: sticky; top: 1rem; }
+.carrinho__vazio { font-size: .83rem; color: var(--texto-sec); text-align: center; padding: 1rem 0; }
+.carrinho__item {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: .5rem; padding: .6rem 0; border-bottom: 1px solid var(--borda);
+  font-size: .83rem;
+}
+.carrinho__item:last-child { border-bottom: none; }
+.carrinho__item-nome { font-weight: 600; color: var(--texto); }
+.carrinho__item-info { font-size: .75rem; color: var(--texto-sec); margin-top: .1rem; }
+.carrinho__remover {
+  background: none; border: none; cursor: pointer;
+  color: var(--vermelho); display: flex; align-items: center; flex-shrink: 0;
+  padding: .2rem;
+}
+.carrinho__remover:hover { opacity: .7; }
+.carrinho__resumo { border-top: 1px solid var(--borda); padding-top: .75rem; margin-top: .5rem; display: flex; flex-direction: column; gap: .35rem; }
+.carrinho__linha { display: flex; justify-content: space-between; font-size: .83rem; color: var(--texto-sec); }
+
+.disc-check { width: 16px; height: 16px; cursor: pointer; accent-color: var(--azul-medio); }
+
+@media (max-width: 900px) {
+  .matricula-layout { grid-template-columns: 1fr; }
+  .carrinho { position: static; }
+}
