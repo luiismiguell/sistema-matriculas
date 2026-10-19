@@ -86,7 +86,7 @@ matriculas/
 ### Aluno (requer autenticação)
 | Página | Descrição |
 |--------|-----------|
-| `dashboard-aluno.html` | Visão geral: cursos aprovadas, em andamento, próxima aula, CR, ações rápidas, disciplinas do período, próximas aulas, avisos |
+| `dashboard-aluno.html` | Visão geral: cursos aprovados, em andamento, próxima aula, CR, ações rápidas, disciplinas do período, próximas aulas, avisos |
 | `matricula.html` | Seleção de disciplinas com filtros, carrinho e confirmação |
 | `horario.html` | Grade semanal (Seg–Sex) com legenda de disciplinas |
 | `plano-estudos.html` | KPIs de progresso + histórico expansível por período com notas e status |
@@ -165,21 +165,18 @@ const API_CONFIG = {
 // Cliente HTTP com tratamento de erros padronizado
 const api = new ApiClient();
 
-// Serviços de domínio prontos para implementar
-const AuthService = { login, cadastrar, logout, ... };
-const EstudanteService = { obterPerfil, obterDashboard, realizarMatricula, ... };
-const AdminService = { obterResumo, listarCursos, criarCurso, listarDisciplinas, ... };
+// Cliente HTTP genérico disponível globalmente
+window.API = { client: api, ApiError };
 
-// Uso global
-window.API = { client: api, Auth: AuthService, Estudante: EstudanteService, Admin: AdminService };
+// Os serviços de domínio devem ser definidos após o contrato real da API.
 ```
 
 ### O que está pronto
-- ✅ Cliente `fetch` com timeout, abort, parsing JSON/texto
-- ✅ Tratamento de erros HTTP (status ≥ 400) com `ApiError`
-- ✅ Suporte a `Authorization: Bearer <token>` via `api.setAuthToken()`
-- ✅ Services organizados por domínio (Auth, Estudante, Admin)
-- ✅ Endpoints **sugeridos** nos comentários `TODO` de cada JS de página
+- ✅ Cliente HTTP genérico baseado em `fetch`, com timeout e cancelamento por `AbortController`
+- ✅ Leitura de respostas JSON ou texto e tratamento padronizado de erros HTTP com `ApiError`
+- ✅ Suporte opcional ao cabeçalho `Authorization: Bearer <token>` por `window.API.client.setAuthToken(token)`
+- ✅ Configuração centralizada de URL-base, timeout e cabeçalhos
+- ⚠️ A camada ainda não é carregada nem utilizada pelos fluxos das páginas; o sistema continua operando com mocks
 
 ### O que **não** está implementado (depende do contrato do backend)
 - Endpoints reais (URLs, métodos, payloads, respostas)
@@ -209,7 +206,7 @@ window.API = { client: api, Auth: AuthService, Estudante: EstudanteService, Admi
 ### Prioridade Alta (Pré-requisitos para produção)
 1. **Definir contrato da API** (OpenAPI/Swagger) com backend
 2. **Implementar autenticação real** (JWT + refresh, interceptor 401)
-3. **Substituir mocks** por chamadas `window.API.*` nos JS das páginas
+3. **Definir serviços e endpoints reais** e então substituir mocks por chamadas da API
 4. **Tratamento de estados** loading/empty/error em todas as listagens
 5. **Validação de CSRF** e headers de segurança
 
@@ -246,16 +243,16 @@ window.API = { client: api, Auth: AuthService, Estudante: EstudanteService, Admi
 - [x] Todos os arquivos importados existem (CSS/JS)
 - [x] Links internos apontam para páginas existentes
 - [x] IDs duplicados eliminados (`val-cursos` → `val-disciplinas`)
-- [x] Sintaxe JavaScript válida (sem erros de console evidentes)
-- [x] Referências a "créditos" removidas (exceto termo genérico em feature card da home)
+- [x] Sintaxe JavaScript verificada com `node --check` (console do navegador não verificado)
+- [x] Referências ao sistema de créditos removidas da interface, CSS e JavaScript
 - [x] Referências a `diagrama-fluxo` removidas
 - [x] Campo "Matrícula Acadêmica" removido do cadastro
-- [x] Sidebars consistentes entre aluno/admin
-- [x] Layouts desktop otimizados (grid, menos rolagem vertical)
+- [x] Sidebars revisadas; item ativo e rótulo de disciplinas corrigidos
+- [x] Layouts reorganizados com grids; revisão visual no navegador ainda pendente
 - [x] `api.js` criado e estruturado
 - [x] `README.md` documentado
 
 ---
 
-**Última atualização**: Outubro 2025  
+**Última atualização**: Outubro 2026  
 **Versão**: 1.0.0 (pós-refatoração)
