@@ -14,8 +14,7 @@ async function carregarDados() {
       cursosMatriculadas: 5,
       cursosAprovadas: 18,
       cursosAndamento: 5,
-      proximaAula: 'Seg 08h — Algoritmos',
-      cr: '8.4'
+      proximaAula: 'Seg 08h — Algoritmos'
     };
 
     document.getElementById('sidebar-nome').textContent      = dados.nomeCompleto;
@@ -26,7 +25,6 @@ async function carregarDados() {
     document.getElementById('val-cursos-aprovadas').textContent  = dados.cursosAprovadas;
     document.getElementById('val-cursos-andamento').textContent  = dados.cursosAndamento;
     document.getElementById('val-proxima-aula').textContent  = dados.proximaAula;
-    document.getElementById('val-cr').textContent            = dados.cr;
 
     // Barra de progresso para cursos aprovados (ex: de 40 cursos do currículo)
     const pct = Math.min(100, Math.round((dados.cursosAprovadas / 40) * 100));

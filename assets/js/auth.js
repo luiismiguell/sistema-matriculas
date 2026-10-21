@@ -4,7 +4,8 @@ initToggleSenha();
 /* Força da senha */
 const inputSenha = document.getElementById('cad-senha');
 const barraForca = document.getElementById('barra-forca');
-if (inputSenha && barraForca) {
+const forcaSenhaContainer = document.querySelector('.forca-senha');
+if (inputSenha && barraForca && forcaSenhaContainer) {
   inputSenha.addEventListener('input', () => {
     const v = inputSenha.value;
     let p = 0;
@@ -14,6 +15,8 @@ if (inputSenha && barraForca) {
     if (/[^A-Za-z0-9]/.test(v)) p++;
     barraForca.style.width      = ['0%','25%','50%','75%','100%'][p];
     barraForca.style.background = ['transparent','#ef4444','#f59e0b','#3b82f6','#10b981'][p];
+    // Atualizar ARIA
+    forcaSenhaContainer.setAttribute('aria-valuenow', p * 25);
   });
 }
 
@@ -28,7 +31,12 @@ if (formLogin) {
     const ok = validarCampo(email, 'Informe seu e-mail.') &
                validarEmail(email) &
                validarCampo(senha, 'Informe sua senha.');
-    if (!ok) return;
+    if (!ok) {
+      // Focar no primeiro campo inválido
+      const primeiroInvalido = formLogin.querySelector('[aria-invalid="true"]');
+      if (primeiroInvalido) primeiroInvalido.focus();
+      return;
+    }
     setCarregando(btn, true);
     try {
       /* TODO: integrar com o endpoint de autenticação após definição do contrato da API. */
@@ -62,19 +70,23 @@ if (formCadastro) {
              validarCampo(senha, 'Crie uma senha.');
 
     if (senha.value.length < 8) {
-      senha.classList.add('invalido');
-      document.getElementById('erro-cad-senha').textContent = 'Mínimo 8 caracteres.';
-      ok = false;
-    }
-    if (senha.value !== confirmar.value) {
-      confirmar.classList.add('invalido');
-      document.getElementById('erro-cad-confirmar').textContent = 'As senhas não coincidem.';
+      marcarInvalido(senha, 'Mínimo 8 caracteres.');
       ok = false;
     } else {
-      confirmar.classList.remove('invalido');
-      document.getElementById('erro-cad-confirmar').textContent = '';
+      marcarValido(senha);
     }
-    if (!ok) return;
+    if (senha.value !== confirmar.value) {
+      marcarInvalido(confirmar, 'As senhas não coincidem.');
+      ok = false;
+    } else {
+      marcarValido(confirmar);
+    }
+    if (!ok) {
+      // Focar no primeiro campo inválido
+      const primeiroInvalido = formCadastro.querySelector('[aria-invalid="true"]');
+      if (primeiroInvalido) primeiroInvalido.focus();
+      return;
+    }
 
     setCarregando(btn, true);
     try {
@@ -83,6 +95,7 @@ if (formCadastro) {
       exibirFeedback('msg-cadastro', 'Conta criada! Faça login para continuar.', 'sucesso');
       formCadastro.reset();
       if (barraForca) barraForca.style.width = '0';
+      if (forcaSenhaContainer) forcaSenhaContainer.setAttribute('aria-valuenow', 0);
     } catch (err) {
       exibirFeedback('msg-cadastro', err.message || 'Erro ao criar conta.', 'erro');
     } finally {

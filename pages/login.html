@@ -6,47 +6,59 @@
   <title>Login — Portal Vivência</title>
   <link rel="stylesheet" href="../assets/css/shared.css" />
   <link rel="stylesheet" href="../assets/css/auth.css" />
+
+  <!-- Script anti-flash do tema (deve rodar antes do paint) -->
+  <script src="../assets/js/shared.js"></script>
 </head>
 <body class="auth-body">
 
-  <header class="cabecalho">
-    <a href="../index.html" class="cabecalho__voltar" title="Voltar à Home">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  <!-- Skip link para acessibilidade -->
+  <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+  <header class="cabecalho" role="banner">
+    <a href="../index.html" class="cabecalho__voltar" aria-label="Voltar à página inicial">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
     </a>
-    <div class="nav__logo" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;">
+    <div class="nav__logo" aria-hidden="true" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
     </div>
     <h1 class="cabecalho__titulo">Portal Vivência</h1>
-    <a href="cadastro.html" class="cabecalho__link" style="margin-left:auto">Criar conta</a>
+    <div class="cabecalho__nav" style="display:flex; align-items:center; gap:.5rem;">
+      <a href="cadastro.html" class="cabecalho__link">Criar conta</a>
+      <button class="btn-tema" aria-label="Ativar tema escuro" aria-pressed="false" type="button">
+        <span class="btn-tema__icone" aria-hidden="true">🌙</span>
+        <span class="btn-tema__texto">Tema escuro</span>
+      </button>
+    </div>
   </header>
 
-  <main class="auth-main">
-    <section class="auth-card">
+  <main id="main-content" class="auth-main">
+    <section class="auth-card" aria-labelledby="login-titulo">
       <div class="auth-card__cabecalho">
-        <div class="cartao__icone cartao__icone--azul">
+        <div class="cartao__icone cartao__icone--azul" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
         </div>
         <div>
-          <h2 class="auth-card__titulo">Iniciar Sessão</h2>
+          <h2 id="login-titulo" class="auth-card__titulo">Iniciar Sessão</h2>
           <p class="auth-card__sub">Acesse sua conta institucional</p>
         </div>
       </div>
 
       <form class="auth-form" id="form-login" novalidate>
         <div class="campo">
-          <label class="campo__label" for="login-email">E-mail Institucional</label>
-          <input class="campo__input" type="email" id="login-email" placeholder="seu.email@universidade.edu.br" autocomplete="email" required />
-          <span class="campo__erro" id="erro-login-email"></span>
+          <label class="campo__label" for="login-email">E-mail Institucional <span class="sr-only">(obrigatório)</span></label>
+          <input class="campo__input" type="email" id="login-email" placeholder="seu.email@universidade.edu.br" autocomplete="email" required aria-required="true" aria-describedby="erro-login-email" />
+          <span class="campo__erro" id="erro-login-email" role="alert" aria-live="polite"></span>
         </div>
         <div class="campo">
-          <label class="campo__label" for="login-senha">Senha</label>
+          <label class="campo__label" for="login-senha">Senha <span class="sr-only">(obrigatório)</span></label>
           <div class="campo__senha-wrapper">
-            <input class="campo__input" type="password" id="login-senha" placeholder="Digite sua senha" autocomplete="current-password" required />
+            <input class="campo__input" type="password" id="login-senha" placeholder="Digite sua senha" autocomplete="current-password" required aria-required="true" aria-describedby="erro-login-senha" />
             <button type="button" class="campo__olho" data-alvo="login-senha" aria-label="Mostrar/ocultar senha">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             </button>
           </div>
-          <span class="campo__erro" id="erro-login-senha"></span>
+          <span class="campo__erro" id="erro-login-senha" role="alert" aria-live="polite"></span>
         </div>
         <div class="auth-form__linha">
           <label class="auth-form__check">
@@ -58,7 +70,7 @@
           <span class="btn__texto">Entrar</span>
           <span class="btn__spinner oculto" aria-hidden="true"></span>
         </button>
-        <div class="feedback oculto" id="msg-login"></div>
+        <div class="feedback oculto" id="msg-login" role="status" aria-live="polite"></div>
       </form>
 
       <p class="auth-card__rodape">
@@ -71,7 +83,10 @@
     <p>© <span class="ano-atual"></span> Portal Vivência. Todos os direitos reservados.</p>
   </footer>
 
-  <script src="../assets/js/shared.js"></script>
   <script src="../assets/js/auth.js"></script>
+  <script>
+    initTheme();
+    initToggleSenha();
+  </script>
 </body>
 </html>

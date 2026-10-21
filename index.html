@@ -13,13 +13,19 @@
 
   <link rel="stylesheet" href="assets/css/shared.css" />
   <link rel="stylesheet" href="assets/css/home.css" />
+
+  <!-- Script anti-flash do tema (deve rodar antes do paint) -->
+  <script src="assets/js/shared.js"></script>
 </head>
 
 <body class="home-body">
 
+  <!-- Skip link para acessibilidade -->
+  <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
   <!-- ───────────────── NAV ───────────────── -->
 
-  <nav class="nav">
+  <nav class="nav" aria-label="Navegação principal">
     <a href="index.html" class="nav__marca" aria-label="Página inicial Portal Vivência">
       <div class="nav__logo" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -43,13 +49,18 @@
   <a href="pages/cadastro.html" class="btn btn--primario btn--sm">
     Criar Conta
   </a>
+
+  <button class="btn-tema" aria-label="Ativar tema escuro" aria-pressed="false" type="button">
+    <span class="btn-tema__icone" aria-hidden="true">🌙</span>
+    <span class="btn-tema__texto">Tema escuro</span>
+  </button>
 </div>
 
   </nav>
 
   <!-- ───────────────── HERO ───────────────── -->
 
-  <main>
+  <main id="main-content">
 
 <section class="hero">
 
@@ -384,7 +395,7 @@
       </h3>
 
       <p class="feature-card__desc">
-        Acompanhe créditos, histórico acadêmico,
+        Acompanhe seu histórico acadêmico,
         cursos concluídos e pendências.
       </p>
 
@@ -501,7 +512,7 @@
       </h3>
 
       <p>
-        Consulte horários, créditos e
+        Consulte horários e
         informações da sua vida acadêmica.
       </p>
 
@@ -600,7 +611,10 @@
 
   </footer>
 
-  <script src="assets/js/shared.js"></script>
+  <script>
+    // Inicializar tema
+    initTheme();
+  </script>
 
 </body>
 </html>

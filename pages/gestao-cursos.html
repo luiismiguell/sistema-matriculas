@@ -6,11 +6,17 @@
   <title>Gestão de Cursos — Portal Vivência</title>
   <link rel="stylesheet" href="../assets/css/shared.css" />
   <link rel="stylesheet" href="../assets/css/gestao.css" />
+
+  <!-- Script anti-flash do tema (deve rodar antes do paint) -->
+  <script src="../assets/js/shared.js"></script>
 </head>
 <body style="display:flex">
 
+  <!-- Skip link para acessibilidade -->
+  <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
   <!-- ── SIDEBAR ADMIN ── -->
-  <aside class="sidebar" id="sidebar">
+  <aside class="sidebar" id="sidebar" aria-label="Navegação do painel administrativo">
     <div class="sidebar__perfil">
       <div class="sidebar__avatar" style="background:rgba(124,58,237,.3)">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
@@ -23,20 +29,20 @@
     </div>
     <nav class="sidebar__nav">
       <a href="dashboard-admin.html" class="sidebar__link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         Painel
       </a>
       <span class="sidebar__sep">Gestão</span>
-      <a href="gestao-cursos.html" class="sidebar__link sidebar__link--ativo">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <a href="gestao-cursos.html" class="sidebar__link sidebar__link--ativo" aria-current="page">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
         Cursos e Carreiras
       </a>
       <a href="gestao-disciplinas.html" class="sidebar__link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
         Disciplinas
       </a>
       <a href="reporte-matricula.html" class="sidebar__link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         Relatórios
       </a>
       </nav>
@@ -51,65 +57,70 @@
 
   <div class="layout">
     <header class="topbar">
-      <button class="topbar__menu" id="btn-menu" aria-label="Abrir menu">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <button class="topbar__menu" id="btn-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <span class="topbar__titulo">Gestão de Cursos</span>
+      <button class="btn-tema" aria-label="Ativar tema escuro" aria-pressed="false" type="button">
+        <span class="btn-tema__icone" aria-hidden="true">🌙</span>
+        <span class="btn-tema__texto">Tema escuro</span>
+      </button>
     </header>
 
-    <main class="conteudo">
+    <main id="main-content" class="conteudo">
 
       <div class="gestao-header">
         <div>
           <h2 class="gestao-header__titulo">Cursos e Carreiras</h2>
           <p class="gestao-header__sub">Gerencie os cursos oferecidos pela instituição</p>
         </div>
-        <button class="btn btn--primario" id="btn-novo-curso">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <button class="btn btn--primario" id="btn-novo-curso" data-modal-trigger="modal-overlay">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           Novo Curso
         </button>
       </div>
 
       <!-- MODAL -->
-      <div class="modal-overlay oculto" id="modal-overlay">
+      <div class="modal-overlay oculto" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" aria-hidden="true">
         <div class="modal">
           <div class="modal__header">
             <h3 class="modal__titulo" id="modal-titulo">Novo Curso</h3>
-            <button class="modal__fechar" id="modal-fechar" aria-label="Fechar">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <button class="modal__fechar" id="modal-fechar" aria-label="Fechar modal">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <form class="modal__form" id="form-curso" novalidate>
             <input type="hidden" id="curso-id" />
             <div class="modal__grid">
               <div class="campo">
-                <label class="campo__label" for="curso-codigo">Código</label>
-                <input class="campo__input" type="text" id="curso-codigo" placeholder="Ex.: CC001" required />
-                <span class="campo__erro" id="erro-curso-codigo"></span>
+                <label class="campo__label" for="curso-codigo">Código <span class="sr-only">(obrigatório)</span></label>
+                <input class="campo__input" type="text" id="curso-codigo" placeholder="Ex.: CC001" required aria-required="true" aria-describedby="erro-curso-codigo" />
+                <span class="campo__erro" id="erro-curso-codigo" role="alert" aria-live="polite"></span>
               </div>
               <div class="campo">
-                <label class="campo__label" for="curso-duracao">Duração (semestres)</label>
-                <input class="campo__input" type="number" id="curso-duracao" placeholder="Ex.: 8" min="1" max="20" required />
-                <span class="campo__erro" id="erro-curso-duracao"></span>
+                <label class="campo__label" for="curso-duracao">Duração (semestres) <span class="sr-only">(obrigatório)</span></label>
+                <input class="campo__input" type="number" id="curso-duracao" placeholder="Ex.: 8" min="1" max="20" required aria-required="true" aria-describedby="erro-curso-duracao" />
+                <span class="campo__erro" id="erro-curso-duracao" role="alert" aria-live="polite"></span>
               </div>
             </div>
             <div class="campo">
-              <label class="campo__label" for="curso-nome">Nome do Curso</label>
-              <input class="campo__input" type="text" id="curso-nome" placeholder="Nome completo do curso" required />
-              <span class="campo__erro" id="erro-curso-nome"></span>
+              <label class="campo__label" for="curso-nome">Nome do Curso <span class="sr-only">(obrigatório)</span></label>
+              <input class="campo__input" type="text" id="curso-nome" placeholder="Nome completo do curso" required aria-required="true" aria-describedby="erro-curso-nome" />
+              <span class="campo__erro" id="erro-curso-nome" role="alert" aria-live="polite"></span>
             </div>
             <div class="campo">
               <label class="campo__label" for="curso-status">Status</label>
-              <select class="campo__select" id="curso-status">
+              <select class="campo__select" id="curso-status" aria-describedby="erro-curso-status">
                 <option value="ativo">Ativo</option>
                 <option value="inativo">Inativo</option>
               </select>
+              <span class="campo__erro" id="erro-curso-status" role="alert" aria-live="polite"></span>
             </div>
             <div class="modal__acoes">
-              <button type="button" class="btn btn--outline" id="btn-cancelar">Cancelar</button>
+              <button type="button" class="btn btn--outline" id="btn-cancelar" data-modal-close>Cancelar</button>
               <button type="submit" class="btn btn--primario">
                 <span class="btn__texto">Salvar</span>
-                <span class="btn__spinner oculto"></span>
+                <span class="btn__spinner oculto" aria-hidden="true"></span>
               </button>
             </div>
           </form>
@@ -117,30 +128,35 @@
       </div>
 
       <!-- TABELA -->
-      <div class="cartao" style="padding:0;overflow:hidden">
+      <section class="cartao" style="padding:0;overflow:hidden" aria-labelledby="tabela-cursos-titulo">
+        <h3 id="tabela-cursos-titulo" class="sr-only">Lista de cursos</h3>
         <div class="tabela-wrapper">
-          <table class="tabela">
+          <table class="tabela" aria-label="Cursos cadastrados">
             <thead>
               <tr>
-                <th>Código</th>
-                <th>Nome do Curso</th>
-                <th>Duração</th>
-                <th>Status</th>
-                <th>Ações</th>
+                <th scope="col">Código</th>
+                <th scope="col">Nome do Curso</th>
+                <th scope="col">Duração</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ações</th>
               </tr>
             </thead>
             <tbody id="tabela-cursos">
-              <tr><td colspan="6" class="tabela__vazio">Carregando…</td></tr>
+              <tr><td colspan="5" class="tabela__vazio">Carregando…</td></tr>
             </tbody>
           </table>
         </div>
-      </div>
+      </section>
 
     </main>
   </div>
 
   <div class="overlay" id="overlay"></div>
-  <script src="../assets/js/shared.js"></script>
   <script src="../assets/js/gestao-cursos.js"></script>
+  <script>
+    initTheme();
+    initSidebar();
+    initModals();
+  </script>
 </body>
 </html>
