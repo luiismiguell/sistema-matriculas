@@ -28,11 +28,11 @@
 .aula-bloco__nome { font-weight: 700; }
 .aula-bloco__sala { font-size: .68rem; opacity: .8; margin-top: .1rem; }
 
-.aula--azul   { background: #dbeafe; color: #1e3a8a; }
-.aula--verde  { background: #d1fae5; color: #065f46; }
-.aula--roxo   { background: #ede9fe; color: #5b21b6; }
-.aula--laranja{ background: #fef3c7; color: #92400e; }
-.aula--rosa   { background: #fce7f3; color: #9d174d; }
+.aula--azul   { background: var(--cor-aula-azul-bg); color: var(--cor-aula-azul-txt); }
+.aula--verde  { background: var(--cor-aula-verde-bg); color: var(--cor-aula-verde-txt); }
+.aula--roxo   { background: var(--cor-aula-roxo-bg); color: var(--cor-aula-roxo-txt); }
+.aula--laranja{ background: var(--cor-aula-laranja-bg); color: var(--cor-aula-laranja-txt); }
+.aula--rosa   { background: var(--cor-aula-rosa-bg); color: var(--cor-aula-rosa-txt); }
 
 .disc-lista {
   display: grid;

@@ -1,6 +1,6 @@
 /* ── dashboard-admin.css ── */
 .banner--admin {
-  background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%);
+  background: linear-gradient(135deg, var(--cor-banner-ini) 0%, var(--cor-banner-fim) 100%);
 }
 
 /* KPIs do dashboard admin - grid 2x2 */

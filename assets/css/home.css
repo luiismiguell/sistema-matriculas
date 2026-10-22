@@ -55,6 +55,7 @@ NAV
   font-size: 18px;
   font-weight: 750;
   letter-spacing: -0.3px;
+  color: var(--azul-escuro);
 }
 
 .home-body .nav__acoes {
@@ -106,6 +107,12 @@ z-index: 2;
   letter-spacing: 0.7px;
 }
 
+[data-theme="dark"] .hero__tag,
+[data-theme="dark"] .section-heading__tag,
+[data-theme="dark"] .cta__tag {
+  color: var(--azul-claro);
+}
+
 .hero__titulo {
   max-width: 650px;
 
@@ -121,6 +128,10 @@ z-index: 2;
 
 .hero__titulo span {
   color: var(--azul-medio);
+}
+
+[data-theme="dark"] .home-body .hero__titulo span {
+  color: var(--azul-claro);
 }
 
 .hero__desc {

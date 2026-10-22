@@ -1,0 +1,73 @@
+/* ── plano-estudos.css ── */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .kpis {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Periodo cards */
+.periodo-card {
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.periodo-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: var(--fundo);
+  border-bottom: 1px solid var(--borda);
+  cursor: pointer;
+}
+
+.periodo-card__header:hover {
+  background: var(--cor-hover-linha);
+}
+
+.periodo-card__titulo {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--azul-escuro);
+}
+
+.periodo-card__meta {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.periodo-card__seta {
+  color: var(--texto-sec);
+  transition: transform .2s;
+}
+
+.periodo-card.aberto .periodo-card__seta {
+  transform: rotate(180deg);
+}
+
+.periodo-card__corpo {
+  padding: 1rem 1.25rem;
+}
+
+.periodo-card:not(.aberto) .periodo-card__corpo {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .periodo-card__header {
+    padding: .85rem 1rem;
+  }
+  .periodo-card__corpo {
+    padding: .85rem 1rem;
+  }
+}
