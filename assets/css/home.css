@@ -58,6 +58,11 @@ NAV
   color: var(--azul-escuro);
 }
 
+[data-theme="dark"] .home-body .nav__nome,
+[data-theme="dark"] .home-body .nav__marca {
+  color: var(--cor-texto);
+}
+
 .home-body .nav__acoes {
   display: flex;
   align-items: center;
@@ -858,6 +863,10 @@ CTA
 
   font-size: 15px;
   line-height: 1.7;
+}
+
+[data-theme="dark"] .cta__desc {
+  color: var(--cor-texto-sec);
 }
 
 .cta__botoes {

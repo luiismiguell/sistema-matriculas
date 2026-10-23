@@ -542,6 +542,11 @@ select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
   display: none !important;
 }
 
+/* Botão de tema em fundos escuros (cabeçalho das páginas de auth) */
+.cabecalho .btn-tema {
+  color: #fff;
+}
+
 /* ── MODAL ACESSÍVEL ── */
 .modal-overlay {
   position: fixed;
