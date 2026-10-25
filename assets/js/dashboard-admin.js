@@ -27,10 +27,10 @@ async function carregarDados() {
       const pct = Math.round((c.matriculados / c.vagas) * 100);
       const cor = corOcupacao(pct);
       return `<tr>
-        <td><span class="badge badge--azul">${c.codigo}</span></td>
-        <td>${c.nome}</td>
-        <td>${c.vagas}</td>
-        <td>${c.matriculados}</td>
+        <td><span class="badge badge--azul">${escaparHTML(c.codigo)}</span></td>
+        <td>${escaparHTML(c.nome)}</td>
+        <td>${escaparHTML(c.vagas)}</td>
+        <td>${escaparHTML(c.matriculados)}</td>
         <td>
           <div class="barra-mini-wrapper">
             <div class="barra-mini"><div class="barra-mini__fill" style="width:${pct}%;background:${cor}"></div></div>

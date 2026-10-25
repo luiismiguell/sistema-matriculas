@@ -43,7 +43,7 @@ function renderizar() {
   container.innerHTML = historico.map((p, i) => `
     <div class="periodo-card ${i === historico.length - 1 ? 'aberto' : ''}">
       <div class="periodo-card__header">
-        <span class="periodo-card__titulo">${p.periodo}</span>
+        <span class="periodo-card__titulo">${escaparHTML(p.periodo)}</span>
         <div class="periodo-card__meta">
           <span class="badge ${p.status === 'concluido' ? 'badge--verde' : 'badge--laranja'}">${p.status === 'concluido' ? 'Concluído' : 'Em andamento'}</span>
           <span style="font-size:.78rem;color:var(--texto-sec)">${p.cursos.length} cursos</span>
@@ -56,9 +56,9 @@ function renderizar() {
             <thead><tr><th>Código</th><th>Disciplina</th><th>Nota</th><th>Situação</th></tr></thead>
             <tbody>
               ${p.cursos.map(d => `<tr>
-                <td><span class="badge badge--azul">${d.codigo}</span></td>
-                <td>${d.nome}</td>
-                <td>${d.nota !== null ? d.nota.toFixed(1) : '—'}</td>
+                <td><span class="badge badge--azul">${escaparHTML(d.codigo)}</span></td>
+                <td>${escaparHTML(d.nome)}</td>
+                <td>${d.nota !== null ? escaparHTML(d.nota.toFixed(1)) : '—'}</td>
                 <td>${badgeStatus(d.status)}</td>
               </tr>`).join('')}
             </tbody>

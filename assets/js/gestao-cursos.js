@@ -13,9 +13,9 @@ let proximoId = 6;
 function renderizarTabela() {
   const corpo = document.getElementById('tabela-cursos');
   corpo.innerHTML = cursos.map(c => `<tr>
-    <td><span class="badge badge--azul">${c.codigo}</span></td>
-    <td>${c.nome}</td>
-    <td>${c.duracao} semestres</td>
+    <td><span class="badge badge--azul">${escaparHTML(c.codigo)}</span></td>
+    <td>${escaparHTML(c.nome)}</td>
+    <td>${escaparHTML(c.duracao)} semestres</td>
     <td><span class="badge ${c.status === 'ativo' ? 'badge--verde' : 'badge--vermelho'}">${c.status === 'ativo' ? 'Ativo' : 'Inativo'}</span></td>
     <td>
       <button class="btn-acao btn-acao--editar" data-id="${c.id}" title="Editar">

@@ -24,12 +24,12 @@ function render() {
 
   document.getElementById('tabela-cursos').innerHTML = lista.length ? lista.map(d => `
     <tr>
-      <td><span class="badge badge--azul">${d.codigo}</span></td>
-      <td><strong>${d.nome}</strong></td>
-      <td>${d.curso}</td>
-      <td>${d.professor}</td>
-      <td>${d.matriculados}/${d.vagas}</td>
-      <td>${d.horario}</td>
+      <td><span class="badge badge--azul">${escaparHTML(d.codigo)}</span></td>
+      <td><strong>${escaparHTML(d.nome)}</strong></td>
+      <td>${escaparHTML(d.curso)}</td>
+      <td>${escaparHTML(d.professor)}</td>
+      <td>${escaparHTML(d.matriculados)}/${escaparHTML(d.vagas)}</td>
+      <td>${escaparHTML(d.horario)}</td>
       <td><span class="badge ${d.status === 'ativa' ? 'badge--verde' : 'badge--vermelho'}">${d.status === 'ativa' ? 'Ativa' : 'Inativa'}</span></td>
       <td>
         <button class="btn-acao btn-acao--editar" data-edit="${d.id}">${svgEdit}</button>

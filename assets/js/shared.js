@@ -331,6 +331,23 @@ function initModals() {
   });
 }
 
+/* ── SEGURANÇA: escape de HTML ── */
+/**
+ * Escapa caracteres especiais de HTML para evitar injeção (XSS).
+ * Usado em textos dinâmicos que podem vir de dados do usuário ou da API.
+ * @param {string} str - Texto a ser escapado
+ * @returns {string} Texto seguro para inserção como texto
+ */
+function escaparHTML(str) {
+  if (str == null) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 /* ── FORMULÁRIOS: validação acessível ── */
 /**
  * Marca campo como inválido e associa mensagem de erro via aria-describedby
@@ -383,8 +400,9 @@ window.validarCampo = validarCampo;
 window.validarEmail = validarEmail;
 window.marcarInvalido = marcarInvalido;
 window.marcarValido = marcarValido;
-window.validarFormulario = validarFormulario;
+window.validarFormulario = validaFormulario;
 window.saudacao = saudacao;
+window.escaparHTML = escaparHTML;
 window.toggleTheme = toggleTheme;
 window.getCurrentTheme = getCurrentTheme;
 window.setTheme = setTheme;

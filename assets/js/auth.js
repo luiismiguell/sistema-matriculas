@@ -41,7 +41,9 @@ if (formLogin) {
     try {
       /* TODO: integrar com o endpoint de autenticação após definição do contrato da API. */
       await new Promise(r => setTimeout(r, 1200));
-      exibirFeedback('msg-login', 'Login realizado! Redirecionando…', 'sucesso');
+      // MODO DEMONSTRATIVO: o login é simulado. Nenhum token ou sessão real é criado.
+      // O redirecionamento é apenas visual; a autenticação real depende do back-end.
+      exibirFeedback('msg-login', 'Demonstração: validação de campos concluída. Autenticação real pendente do back-end.', 'aviso');
       setTimeout(() => { window.location.href = 'dashboard-aluno.html'; }, 1500);
     } catch (err) {
       exibirFeedback('msg-login', err.message || 'Erro ao realizar login.', 'erro');
@@ -92,7 +94,7 @@ if (formCadastro) {
     try {
       /* TODO: integrar com o endpoint de cadastro após definição do contrato da API. */
       await new Promise(r => setTimeout(r, 1200));
-      exibirFeedback('msg-cadastro', 'Conta criada! Faça login para continuar.', 'sucesso');
+      exibirFeedback('msg-cadastro', 'Demonstração: dados validados. A conta real será criada pelo back-end.', 'aviso');
       formCadastro.reset();
       if (barraForca) barraForca.style.width = '0';
       if (forcaSenhaContainer) forcaSenhaContainer.setAttribute('aria-valuenow', 0);

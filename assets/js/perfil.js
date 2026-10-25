@@ -123,7 +123,7 @@ async function obterUsuarioAutenticado() {
  * Gera iniciais para avatar
  */
 function gerarIniciais(nome) {
-  return nome
+  return (nome || '')
     .split(' ')
     .filter(p => p.length > 0)
     .map(p => p[0])
@@ -182,9 +182,9 @@ function renderizarNavegacao(tipo) {
   };
 
   nav.innerHTML = links.map(link => `
-    <a href="${link.href}" class="sidebar__link ${link.ativo ? 'sidebar__link--ativo' : ''}" ${link.ativo ? 'aria-current="page"' : ''}>
+    <a href="${escaparHTML(link.href)}" class="sidebar__link ${link.ativo ? 'sidebar__link--ativo' : ''}" ${link.ativo ? 'aria-current="page"' : ''}>
       ${icones[link.icon] || ''}
-      ${link.label}
+      ${escaparHTML(link.label)}
     </a>
   `).join('') + (tipo === 'aluno' ? '<span class="sidebar__sep">Ferramentas</span>' : '');
 }
@@ -197,11 +197,14 @@ function atualizarAvatar(elementId, nome) {
   if (!el) return;
 
   // Limpar conteúdo
-  el.innerHTML = '';
+  el.textContent = '';
 
   // Verifica se há imagem (mock: sempre usar iniciais por enquanto)
   const iniciais = gerarIniciais(nome);
-  el.innerHTML = `<span style="font-weight:600;font-size:1.2rem;color:var(--sidebar-link);">${iniciais}</span>`;
+  const span = document.createElement('span');
+  span.style.cssText = 'font-weight:600;font-size:1.2rem;color:var(--sidebar-link);';
+  span.textContent = iniciais;
+  el.appendChild(span);
 }
 
 /**
@@ -295,21 +298,21 @@ function renderizarPendencias(tipo) {
 
   container.innerHTML = pendencias.map(p => `
     <article class="pendencia-item">
-      <div class="pendencia-item__icone pendencia-item__icone--${p.icone}">
+      <div class="pendencia-item__icone pendencia-item__icone--${escaparHTML(p.icone)}">
         ${icones[p.icone] || icones.info}
       </div>
       <div class="pendencia-item__conteudo">
-        <h4 class="pendencia-item__titulo">${p.titulo}</h4>
-        <p class="pendencia-item__descricao">${p.descricao}</p>
+        <h4 class="pendencia-item__titulo">${escaparHTML(p.titulo)}</h4>
+        <p class="pendencia-item__descricao">${escaparHTML(p.descricao)}</p>
         <div class="pendencia-item__meta">
-          <span class="pendencia-item__status pendencia-item__status--${p.situacao}">
+          <span class="pendencia-item__status pendencia-item__status--${escaparHTML(p.situacao)}">
             ${p.situacao === 'pendente' ? 'Pendente' : p.situacao === 'em-analise' ? 'Em análise' : 'Concluído'}
           </span>
         </div>
       </div>
       ${p.acao ? `
         <div class="pendencia-item__acao">
-          <a href="${p.acao.href}" class="btn btn--outline btn--sm">${p.acao.label}</a>
+          <a href="${escaparHTML(p.acao.href)}" class="btn btn--outline btn--sm">${escaparHTML(p.acao.label)}</a>
         </div>
       ` : ''}
     </article>
@@ -339,7 +342,8 @@ function renderizarPerfil(perfil, tipo) {
   // Data de cadastro
   if (perfil.dataCadastro) {
     const cadastroEl = document.getElementById('perfil-cadastro');
-    cadastroEl.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Membro desde ${formatarData(perfil.dataCadastro)}`;
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
+    cadastroEl.innerHTML = svg + ' Membro desde ' + escaparHTML(formatarData(perfil.dataCadastro));
     cadastroEl.removeAttribute('aria-hidden');
   }
 

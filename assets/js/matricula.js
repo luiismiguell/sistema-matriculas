@@ -26,11 +26,11 @@ function renderizarTabela(lista) {
     const semVaga = d.vagas === 0;
     return `<tr>
       <td><input type="checkbox" class="disc-check" data-id="${d.id}" ${noCarrinho ? 'checked' : ''} ${semVaga && !noCarrinho ? 'disabled' : ''}></td>
-      <td><span class="badge badge--azul">${d.codigo}</span></td>
-      <td>${d.nome}</td>
-      <td>${d.periodo}º</td>
+      <td><span class="badge badge--azul">${escaparHTML(d.codigo)}</span></td>
+      <td>${escaparHTML(d.nome)}</td>
+      <td>${escaparHTML(d.periodo)}º</td>
       <td><span class="badge ${d.vagas === 0 ? 'badge--vermelho' : d.vagas <= 5 ? 'badge--laranja' : 'badge--verde'}">${d.vagas === 0 ? 'Esgotado' : d.vagas + ' vagas'}</span></td>
-      <td style="font-size:.78rem;color:var(--texto-sec)">${d.horario}</td>
+      <td style="font-size:.78rem;color:var(--texto-sec)">${escaparHTML(d.horario)}</td>
     </tr>`;
   }).join('');
 
@@ -63,8 +63,8 @@ function renderizarCarrinho() {
   container.innerHTML = carrinho.map(d => `
     <div class="carrinho__item">
       <div>
-        <p class="carrinho__item-nome">${d.nome}</p>
-        <p class="carrinho__item-info">${d.codigo}</p>
+        <p class="carrinho__item-nome">${escaparHTML(d.nome)}</p>
+        <p class="carrinho__item-info">${escaparHTML(d.codigo)}</p>
       </div>
       <button class="carrinho__remover" data-id="${d.id}" aria-label="Remover">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -104,7 +104,9 @@ document.getElementById('btn-confirmar').addEventListener('click', async () => {
   try {
     /* TODO: confirmar a matrícula pela API após definição do contrato do backend. */
     await new Promise(r => setTimeout(r, 1200));
-    exibirFeedback('msg-matricula', `Matrícula confirmada em ${carrinho.length} disciplina(s)!`, 'sucesso');
+    // MODO DEMONSTRATIVO: a matrícula é apenas simulada. Nenhuma vaga é reservada
+    // e nenhuma inscrição é persistida. A confirmação real depende do back-end.
+    exibirFeedback('msg-matricula', `Demonstração: ${carrinho.length} disciplina(s) selecionadas. A matrícula real será confirmada pelo back-end.`, 'aviso');
     carrinho = [];
     renderizarCarrinho();
     renderizarTabela(filtrarcursos());
